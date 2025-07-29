@@ -1,0 +1,28 @@
+<p>Incident ID: #2025‑07‑28‑001</p>
+<p>Duration: 11:01 PM – 11:08 PM (Europe/Berlin)</p>
+
+<b>Summary:</b>
+<p>At 11:01 PM, one of our uninterruptible power supplies (UPS) failed, preventing a secondary network switch from engaging correctly. This caused a complete network outage to the validator’s endpoint. While the node software remained running, it lost synchronization and could not participate in consensus during the outage.</p>
+
+<b>Impact:</b>
+<ul><li>Validator endpoint unreachable for ~7 minutes</li>
+<li>Node unsynchronized and unable to join consensus until network restored</li>
+<li>No data loss; all blocks were processed once connectivity returned</li>
+<li>No reduction in pool rewards for delegators</li></ul>
+
+
+<b>Root Cause:</b>
+<p>A UPS unit did not transfer power as intended, causing the attached switch to lose connectivity and isolate the validator from the network.</p>
+
+<b>Resolution:</b>
+<ul><li>Faulty UPS was bypassed, and power restored to the switch by 11:08 PM</li>
+<li>Network connectivity resumed, and the node automatically synced the missed ledger state</li>
+<li>Consensus participation recommenced immediately after sync completion</li>
+<li>Full infrastructure health check verified no residual issues</li></ul>
+
+
+<b>Next Steps / Preventative Measures:</b>
+<ol><li>Replace the failed UPS with a certified spare unit.</li>
+<li>Enhance UPS failover and switch-over testing procedures.</li>
+<li>Schedule quarterly failover drills to validate network redundancy.</li></ol>
+We apologize for the interruption and remain dedicated to ensuring the highest level of reliability for our validator services.
